@@ -1,5 +1,4 @@
 # dependencies
-node_modules
 .pnp
 .pnp.js
 vendor
@@ -22,3 +21,4 @@ yarn-error.log*
 .idea
 .vscode
 node_modules
+/.eslintcache
