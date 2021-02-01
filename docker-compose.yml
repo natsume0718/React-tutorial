@@ -1,0 +1,17 @@
+version: "3"
+
+networks:
+  default:
+
+services:
+  node:
+    image: node:14-alpine
+    working_dir: /app
+    tty: true
+    volumes:
+      - .:/app:cached
+    ports:
+      - 8888:3000
+    networks:
+      - default
+
