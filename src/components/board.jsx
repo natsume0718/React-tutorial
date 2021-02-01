@@ -7,13 +7,18 @@ export default class Board extends React.Component {
     this.state = {
       squares: Array(9)
         .fill(null),
+      isFirstPlayer: true,
     };
   }
 
   handleClick(i) {
     const { squares } = this.state;
-    squares[i] = 'X';
-    this.setState({ squares: squares });
+    let { isFirstPlayer } = this.state;
+    squares[i] = isFirstPlayer ? 'X' : '◯';
+    this.setState({
+      squares: squares,
+      isFirstPlayer: !isFirstPlayer
+    });
   }
 
   renderSquare(i) {
@@ -22,7 +27,8 @@ export default class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: X';
+    const {isFirstPlayer} = this.state;
+    const status = `Next player: ${isFirstPlayer ? 'X' : '◯'}`;
     return (
       <div>
         <div className="status">{status}</div>
