@@ -19,17 +19,19 @@ export default class Game extends React.Component {
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
-    const { squares } = current;
+    const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.isFirstPlayer ? 'X' : 'O';
+    squares[i] = this.state.isFirstPlayer ? "X" : "O";
     this.setState({
-      history: history.concat([{
-        squares: squares
-      }]),
+      history: history.concat([
+        {
+          squares: squares
+        }
+      ]),
       stepNumber: history.length,
-      isFirstPlayer: !this.state.isFirstPlayer,
+      isFirstPlayer: !this.state.isFirstPlayer
     });
   }
 
